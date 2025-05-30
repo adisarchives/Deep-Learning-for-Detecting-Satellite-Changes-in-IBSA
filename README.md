@@ -1,3 +1,6 @@
+python version used== 3.7 
+
+
 ## 🔽 Download Large Model Files
 
 Run the script below to fetch required model files (CNN weights, dataset):
