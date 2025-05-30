@@ -1,0 +1,10 @@
+
+
+---
+
+#### 4. **Update your `.gitignore`**
+Create a `.gitignore` if it doesn't exist, and add:
+
+model/cnn_weights.hdf5
+model/X.npy
+
