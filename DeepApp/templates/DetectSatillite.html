@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Satellite Image Change Detection</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <script language="javascript">
+        function validate(formObj) {
+            if(formObj.t1.value.length == 0) {
+                alert("Please Enter Event Post");
+                formObj.t1.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <center><font size="4" color="yellow">Deep Learning for Detecting Satellite Image Changes in Indian Border Security Applications</font></center>
+            </div>
+            <div id="slogan">
+                <!-- You can add a slogan here -->
+            </div>
+        </div>
+
+        <div id="menu">
+            <ul>
+                <center>
+                    <li class="first current_page_item"><a href="{% url 'LoadDataset' %}"><font color="yellow">Load Dataset</font></a></li>
+                    
+                    <li class="first current_page_item"><a href="{% url 'TrainCNN' %}"><font color="yellow">Run All Algorithms</font></a></li>    
+                    <li class="first current_page_item"><a href="{% url 'PredictImage' %}"><font color="yellow">Predict Deep Fake</font></a></li>
+                    <li class="first current_page_item"><a href="{% url 'index' %}"><font color="yellow">Logout</font></a></li>
+                </center>
+            </ul>
+            <br class="clearfix" />
+        </div>
+
+        <div id="splash">
+            <img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="Satellite Change Detection" />
+        </div>
+
+        <center>
+            <form name="f1" method="post" action="{% url 'PredictImageAction' %}" onsubmit="return validate(this);" enctype="multipart/form-data">
+                <br />{% csrf_token %}
+                <h5><b>Satellite Image Change Detection</b></h5>
+                
+                <font size="4" color="red">
+                    <center>{{ data|safe }}</center>
+                </font>
+
+                <table align="center" width="60%">
+                    <tr>
+                        <td><font color="black">Upload Satellite Image</font></td>
+                        <td><input type="file" name="image" accept="image/*" required /></td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Submit" /></td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+
+    </div>
+    <br /><br />
+</body>
+</html>
